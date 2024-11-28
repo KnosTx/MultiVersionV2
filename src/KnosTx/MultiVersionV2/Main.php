@@ -49,6 +49,6 @@ class Main extends PluginBase implements Listener {
 
     public function getNetworkSession() : int{
         $networkSession = $this->networkSession;
-        return $this->networkSession;
+        return $networkSession;
     }
 }

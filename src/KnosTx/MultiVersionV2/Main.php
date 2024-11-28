@@ -57,7 +57,7 @@ class Main extends PluginBase implements Listener{
      * Handles the PlayerPreLoginEvent to load protocol-specific data.
      *
      * @param PlayerPreLoginEvent $event
-     * @param Player $players
+     * @param OfflinePlayer $players
      * @return void
      */
     public function onPlayerPreLogin(PlayerPreLoginEvent $event, OfflinePlayer $players): void{

@@ -1,0 +1,4 @@
+enableDefaultFallback: true
+logLevel: "info" # Options: debug, info, warning, error
+notifyPlayers: true # Notify players about version handling
+sendWelcomeMessage: true # Send welcome messages to players

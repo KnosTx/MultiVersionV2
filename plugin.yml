@@ -1,0 +1,6 @@
+name: MultiVersionV2
+version: 1.0.0
+main: KnosTx\MultiVersionV2\Main
+api: 5.0.0
+author: KnosTx
+description: A plugin to support multiple Minecraft protocol versions.

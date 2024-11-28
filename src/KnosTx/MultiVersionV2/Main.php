@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MultiVersionV2;
 
+use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerPreLoginEvent;
@@ -40,7 +41,6 @@ class Main extends PluginBase implements Listener{
         $this->playerManager = new PlayerManager($this->protocolHandler, $this->configLoader);
 
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->getLogger()->info("MultiVersionV2 has been enabled.");
     }
 
     /**
@@ -57,14 +57,15 @@ class Main extends PluginBase implements Listener{
      * Handles the PlayerPreLoginEvent to load protocol-specific data.
      *
      * @param PlayerPreLoginEvent $event
+     * @param Player $players
      * @return void
      */
-    public function onPlayerPreLogin(PlayerPreLoginEvent $event): void{
-        $player = $event->getPlayer();
-        $protocol = $player->getNetworkSession()->getProtocol();
+    public function onPlayerPreLogin(PlayerPreLoginEvent $event, Player $players): void{
+        $player = $players->getPlayer();
+        $protocol = $players->getNetworkSession()->getProtocol();
 
         if(!$this->protocolHandler->loadDataForProtocol($protocol)){
-            $this->getLogger()->warning("Unsupported protocol {$protocol}. Using default fallback for {$player->getName()}.");
+            $this->getLogger()->warning("Unsupported protocol {$protocol}. Using default fallback for {$players->getName()}.");
         }
     }
 

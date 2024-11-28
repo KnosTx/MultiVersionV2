@@ -47,7 +47,7 @@ class Main extends PluginBase implements Listener {
         $this->playerManager->handlePlayerJoin($player);
     }
 
-    public function getNetworkSession() : void{
+    public function getNetworkSession() : int{
         $networkSession = $this->networkSession;
         return $this->networkSession;
     }

@@ -1,0 +1,8 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/KnosTx/MultiVersionV2
+build-by-default: true
+branches:
+- stable
+projects:
+  MultiVersionV2:
+    path: ""
+...

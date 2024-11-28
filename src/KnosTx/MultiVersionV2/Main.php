@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MultiVersionV2;
 
-use pocketmine\player\Player;
+use pocketmine\player\OfflinePlayer;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerPreLoginEvent;
@@ -60,7 +60,7 @@ class Main extends PluginBase implements Listener{
      * @param Player $players
      * @return void
      */
-    public function onPlayerPreLogin(PlayerPreLoginEvent $event, Player $players): void{
+    public function onPlayerPreLogin(PlayerPreLoginEvent $event, OfflinePlayer $players): void{
         $player = $players->getPlayer();
         $protocol = $players->getNetworkSession()->getProtocol();
 

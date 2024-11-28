@@ -9,14 +9,16 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\network\mcpe\NetworkSession;
 
 class Main extends PluginBase implements Listener {
 
-    private ProtocolHandler $protocolHandler;
-    private ConfigLoader $configLoader;
-    private PlayerManager $playerManager;
+	private ProtocolHandler $protocolHandler;
+	private ConfigLoader $configLoader;
+	private PlayerManager $playerManager;
+	private NetworkSession $networkSession;
 
-    public function onEnable(): void {
+    public function onEnable() : void {
         $this->saveDefaultResources();
 
         $this->configLoader = new ConfigLoader($this);
@@ -26,22 +28,27 @@ class Main extends PluginBase implements Listener {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
-    private function saveDefaultResources(): void {
+    private function saveDefaultResources() : void {
         $this->saveResource("config.yml");
         $this->saveResource("versionMap.yml");
     }
 
-    public function onPlayerPreLogin(PlayerPreLoginEvent $event): void {
+    public function onPlayerPreLogin(PlayerPreLoginEvent $event) : void {
         $playerInfo = $event->getPlayerInfo();
-        $protocol = $event->getNetworkSession()->getProtocol();
+        $protocol = $this->getNetworkSession()->getProtocol();
 
         if (!$this->protocolHandler->loadDataForProtocol($protocol)) {
             $this->getLogger()->warning("Unsupported protocol {$protocol}. Using default fallback for {$playerInfo->getUsername()}.");
         }
     }
 
-    public function onPlayerJoin(PlayerJoinEvent $event): void {
+    public function onPlayerJoin(PlayerJoinEvent $event) : void {
         $player = $event->getPlayer();
         $this->playerManager->handlePlayerJoin($player);
+    }
+
+    public function getNetworkSession() : void{
+        $networkSession = $this->networkSession;
+        return $this->networkSession;
     }
 }

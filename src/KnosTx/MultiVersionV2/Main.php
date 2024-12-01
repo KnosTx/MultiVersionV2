@@ -16,7 +16,7 @@ class Main extends PluginBase implements Listener {
 	private ProtocolHandler $protocolHandler;
 	private ConfigLoader $configLoader;
 	private PlayerManager $playerManager;
-	private NetworkSession $networkSession;
+	private RequestNetworkSettingsPacket $networkSession;
 
     public function onEnable() : void {
         $this->saveDefaultResources();
@@ -36,7 +36,7 @@ class Main extends PluginBase implements Listener {
 
     public function onPlayerPreLogin(PlayerPreLoginEvent $event) : void {
         $playerInfo = $event->getPlayerInfo();
-        $protocol = $this->getNetworkSession()->getProtocol();
+        $protocol = $this->getNetworkSession()->getProtocolVersion();
 
         if (!$this->protocolHandler->loadDataForProtocol($protocol)) {
             $this->getLogger()->warning("Unsupported protocol {$protocol}. Using default fallback for {$playerInfo->getUsername()}.");
@@ -48,7 +48,7 @@ class Main extends PluginBase implements Listener {
         $this->playerManager->handlePlayerJoin($player);
     }
 
-    public function getNetworkSession() : NetworkSession{
+    public function getNetworkSession() : RequestNetworkSettingsPacket{
         return $this->networkSession;
     }
 }

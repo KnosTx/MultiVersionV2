@@ -21,6 +21,7 @@ class Main extends PluginBase implements Listener {
     public function onEnable() : void {
         $this->saveDefaultResources();
 
+	$this->networkSession = $networkSession;
         $this->configLoader = new ConfigLoader($this);
         $this->protocolHandler = new ProtocolHandler($this, $this->configLoader);
         $this->playerManager = new PlayerManager($this->protocolHandler, $this->configLoader);

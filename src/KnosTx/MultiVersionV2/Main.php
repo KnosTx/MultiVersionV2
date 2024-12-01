@@ -51,4 +51,8 @@ class Main extends PluginBase implements Listener {
     public function getNetworkSession() : RequestNetworkSettingsPacket{
         return $this->networkSession;
     }
+
+    public function getRequestNetworkSettings() : RequestNetworkSettingsPacket{
+	 $networkSession = $this->networkSession;
+    }
 }

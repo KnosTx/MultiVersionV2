@@ -10,6 +10,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\network\mcpe\NetworkSession;
+use pocketmine\network\mcpe\protocol\RequestNetworkSettingsPacket;
 
 class Main extends PluginBase implements Listener {
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MultiVersionV2;
+namespace KnosTx\MultiVersionV2;
 
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;

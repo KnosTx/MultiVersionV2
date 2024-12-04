@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace MultiVersionV2;
 
-use pocketmine\plugin\PluginBase;
-
 /**
  * Handles protocol-specific item/block data.
  */
 class ProtocolHandler{
 
-    private PluginBase $plugin;
+    private Main $plugin;
     private ConfigLoader $configLoader;
     private array $data = [];
     private array $defaultData = [];
@@ -23,7 +21,7 @@ class ProtocolHandler{
     }
 
     private function loadDefaultData(): void{
-        $defaultFile = $this->plugin->getFile() . "resources/default.json";
+        $defaultFile = $this->plugin->getPluginFile() . "resources/default.json";
         $this->defaultData = json_decode(file_get_contents($defaultFile), true) ?? [];
     }
 
@@ -34,7 +32,7 @@ class ProtocolHandler{
             return false;
         }
 
-        $filePath = $this->plugin->getFile() . "resources/" . $fileName;
+        $filePath = $this->plugin->getPluginFile() . "resources/" . $fileName;
         if(!file_exists($filePath)){
             $this->data = $this->defaultData;
             return false;

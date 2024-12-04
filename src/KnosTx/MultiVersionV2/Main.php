@@ -17,9 +17,11 @@ class Main extends PluginBase implements Listener {
 	private ProtocolHandler $protocolHandler;
 	private ConfigLoader $configLoader;
 	private PlayerManager $playerManager;
+	private RequestNetworkSettingsPacket $networkSession;
 
     public function onEnable() : void {
         $this->saveDefaultResources();
+	$this->networkSession = $networkSession;
 
         $this->configLoader = new ConfigLoader($this);
         $this->protocolHandler = new ProtocolHandler($this, $this->configLoader);
@@ -49,9 +51,5 @@ class Main extends PluginBase implements Listener {
 
     public function getNetworkSession() : RequestNetworkSettingsPacket{
         return $this->networkSession;
-    }
-
-    public function getRequestNetworkSettings() : RequestNetworkSettingsPacket{
-	 return $this->networkSession->getProtocolVersion();
     }
 }

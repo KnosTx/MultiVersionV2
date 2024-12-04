@@ -10,9 +10,12 @@ use pocketmine\player\Player;
  * Handles player-specific interactions.
  */
 class PlayerManager{
+
+    private ProtocolHandler $protocolHandler;
     private ConfigLoader $configLoader;
 
-    public function __construct(ConfigLoader $configLoader){
+    public function __construct(ProtocolHandler $protocolHandler, ConfigLoader $configLoader){
+        $this->protocolHandler = $protocolHandler;
         $this->configLoader = $configLoader;
     }
 
@@ -21,4 +24,7 @@ class PlayerManager{
             $player->sendMessage("Welcome to the server, {$player->getName()}!");
         }
     }
+
+    public function getProtocolHandler() : ProtocolHandler{
+        return $this->protocolHandler;
 }

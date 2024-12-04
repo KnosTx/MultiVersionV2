@@ -27,4 +27,5 @@ class PlayerManager{
 
     public function getProtocolHandler() : ProtocolHandler{
         return $this->protocolHandler;
+    }
 }

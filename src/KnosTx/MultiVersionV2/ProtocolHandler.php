@@ -14,7 +14,7 @@ class ProtocolHandler{
     private array $data = [];
     private array $defaultData = [];
 
-    public function __construct(PluginBase $plugin, ConfigLoader $configLoader){
+    public function __construct(Main $plugin, ConfigLoader $configLoader){
         $this->plugin = $plugin;
         $this->configLoader = $configLoader;
         $this->loadDefaultData();

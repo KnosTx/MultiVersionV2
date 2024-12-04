@@ -52,4 +52,8 @@ class Main extends PluginBase implements Listener {
     public function getNetworkSession() : RequestNetworkSettingsPacket{
         return $this->networkSession;
     }
+
+	public function getPluginFile() : string{
+		return $this->getFile();
+	}
 }

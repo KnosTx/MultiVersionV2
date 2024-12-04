@@ -10,12 +10,9 @@ use pocketmine\player\Player;
  * Handles player-specific interactions.
  */
 class PlayerManager{
-
-    private ProtocolHandler $protocolHandler;
     private ConfigLoader $configLoader;
 
-    public function __construct(ProtocolHandler $protocolHandler, ConfigLoader $configLoader){
-        $this->protocolHandler = $protocolHandler;
+    public function __construct(ConfigLoader $configLoader){
         $this->configLoader = $configLoader;
     }
 

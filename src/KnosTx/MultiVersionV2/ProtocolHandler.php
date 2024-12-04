@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MultiVersionV2;
+namespace KnosTx\MultiVersionV2;
 
 /**
  * Handles protocol-specific item/block data.
